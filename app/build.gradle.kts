@@ -1,14 +1,18 @@
+import org.jetbrains.kotlin.gradle.targets.js.npm.importedPackageDir
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
-    namespace = "com.example.myapplication"
+    namespace = "com.example.jetpack"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.myapplication"
+        applicationId = "com.example.jetpack"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -66,4 +70,44 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    // Splash Api
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
+    // Compose Navigation
+    val nav_version = "2.7.6"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    //dagger hilt
+    implementation("com.google.dagger:hilt-android:2.48")
+    ksp("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    //Data Source
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    //Compose Foundation
+    implementation("androidx.compose.foundation:foundation:1.5.4")
+
+    // Accompanist
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.33.2-alpha")
+
+    //Paging 3
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("androidx.paging:paging-compose:3.2.1")
+
+    //room
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:2.6.1")
+
+
 }
+
